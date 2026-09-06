@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GK Education Point — Small-Group Math & Science Tuition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --indigo: #2A3B7C;
+    --indigo-deep: #1D2A5C;
+    --marigold: #F0942B;
+    --marigold-deep: #D57C18;
+    --maroon: #7A1F2B;
+    --cream: #FBF6EC;
+    --ink: #23264A;
+    --line: rgba(42,59,124,0.14);
+    --line-dark: rgba(251,246,236,0.16);
+    --display: 'Baloo 2', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:var(--sans); line-height:1.55;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header{position:sticky; top:0; z-index:50; background:var(--cream); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1120px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:700; font-size:1.25rem; color:var(--indigo);}
+  .brand .mark{width:30px; height:30px; flex-shrink:0;}
+  .nav-links{display:flex; gap:32px; font-size:0.95rem; font-weight:500;}
+  .nav-links a{text-decoration:none; color:var(--ink); border-bottom:2px solid transparent; padding-bottom:2px; transition:border-color .15s ease;}
+  .nav-links a:hover{border-color:var(--marigold);}
+  .nav-cta{background:var(--marigold); color:var(--indigo-deep); border:none; padding:11px 22px; border-radius:24px; font-family:var(--sans); font-weight:700; font-size:0.9rem; cursor:pointer; text-decoration:none; display:inline-block;}
+  .nav-cta:hover{background:var(--marigold-deep); color:var(--cream);}
+
+  /* ---------- Hero ---------- */
+  .hero{background:var(--indigo); color:var(--cream); position:relative; overflow:hidden; padding:88px 0 66px;}
+  .accent-bar{position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg,var(--marigold),var(--maroon),var(--marigold));}
+  .hero-grid{position:relative; display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
+  .format-badge{
+    display:inline-flex; align-items:center; gap:8px; background:rgba(251,246,236,0.1);
+    border:1px solid rgba(251,246,236,0.22); border-radius:20px; padding:7px 16px;
+    font-size:0.83rem; font-weight:600; color:rgba(251,246,236,0.9); margin:0 0 22px;
+  }
+  .format-badge .dot{color:var(--marigold); font-weight:700;}
+  h1{font-family:var(--display); font-weight:700; font-size:clamp(2.1rem, 4.2vw, 3.2rem); line-height:1.12; margin:0 0 20px; max-width:15ch;}
+  .hero p.lede{font-size:1.08rem; color:rgba(251,246,236,0.82); max-width:44ch; margin:0 0 32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{background:var(--marigold); color:var(--indigo-deep); font-weight:700; padding:14px 26px; border-radius:24px; text-decoration:none; font-size:0.96rem;}
+  .btn-primary:hover{background:var(--marigold-deep); color:var(--cream);}
+  .btn-ghost{border:1.5px solid rgba(251,246,236,0.4); color:var(--cream); padding:13px 24px; border-radius:24px; text-decoration:none; font-weight:600; font-size:0.96rem;}
+  .btn-ghost:hover{border-color:var(--cream);}
+  .hero-stats{display:flex; gap:28px; margin-top:44px; flex-wrap:wrap;}
+  .hero-stats div{border-left:2px solid var(--marigold); padding-left:12px;}
+  .hero-stats strong{display:block; font-family:var(--display); font-size:1.5rem; font-weight:700;}
+  .hero-stats span{font-size:0.8rem; color:rgba(251,246,236,0.65);}
+
+  .panel{background:var(--indigo-deep); border:1px solid var(--line-dark); border-radius:10px; padding:28px 26px;}
+  .panel h3{margin:0 0 18px; font-family:var(--sans); font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:rgba(251,246,236,0.6);}
+  .panel-row{display:flex; justify-content:space-between; align-items:center; padding:13px 0; border-bottom:1px solid var(--line-dark); font-size:0.95rem;}
+  .panel-row:last-child{border-bottom:none; padding-bottom:0;}
+  .panel-row .up{color:var(--marigold); font-weight:700; font-size:0.9rem;}
+
+  /* ---------- Sections ---------- */
+  section{padding:76px 0;}
+  .eyebrow{font-weight:700; font-size:0.8rem; letter-spacing:0.05em; color:var(--marigold-deep); margin:0 0 12px;}
+  h2{font-family:var(--display); font-weight:700; font-size:clamp(1.7rem,3vw,2.2rem); margin:0 0 16px; max-width:22ch; color:var(--indigo);}
+  .section-intro{max-width:60ch; color:rgba(35,38,74,0.68); font-size:1.02rem; margin-bottom:44px;}
+
+  /* ---------- About ---------- */
+  .about{background:var(--cream);}
+  .about-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:48px; align-items:center;}
+  .photo-placeholder{
+    aspect-ratio:4/5; background:#F1E9D8; border:1.5px dashed var(--line);
+    border-radius:10px; display:flex; align-items:center; justify-content:center;
+    color:rgba(35,38,74,0.4); font-size:0.9rem; font-weight:600;
+  }
+  .about-text{font-size:1rem; color:rgba(35,38,74,0.72); max-width:52ch; margin:0 0 16px;}
+  .about-facts{display:flex; flex-direction:column; gap:12px; margin-top:24px; border-top:1px solid var(--line); padding-top:20px;}
+  .about-facts div{display:flex; justify-content:space-between; max-width:44ch; font-size:0.92rem;}
+  .about-facts strong{color:var(--indigo); font-weight:700;}
+  .about-facts span{color:rgba(35,38,74,0.62);}
+
+  /* ---------- Subjects ---------- */
+  .subjects{background:#FFFDF8;}
+  .subject-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .subject-card{background:var(--cream); border:1px solid var(--line); border-radius:10px; padding:28px 24px;}
+  .subject-card h4{font-family:var(--display); font-size:1.15rem; font-weight:600; margin:0 0 10px; color:var(--indigo);}
+  .subject-card p{margin:0; font-size:0.93rem; color:rgba(35,38,74,0.65);}
+  .subject-card .tag{display:inline-block; font-size:0.7rem; font-weight:800; letter-spacing:0.02em; color:var(--maroon); background:rgba(122,31,43,0.08); padding:3px 10px; border-radius:20px; margin-bottom:12px;}
+
+  /* ---------- How it works ---------- */
+  .how{background:var(--cream);}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
+  .step{position:relative; padding-right:20px;}
+  .step-num{font-family:var(--display); font-size:2.2rem; font-weight:700; color:rgba(42,59,124,0.18); margin-bottom:12px; display:block;}
+  .step h4{font-size:1rem; font-weight:700; margin:0 0 8px; color:var(--indigo);}
+  .step p{font-size:0.9rem; color:rgba(35,38,74,0.62); margin:0;}
+  .step:not(:last-child)::after{content:""; position:absolute; top:20px; right:0; width:16px; height:2px; background:var(--marigold);}
+
+  /* ---------- Why ---------- */
+  .why-section{background:var(--indigo); color:var(--cream);}
+  .why-section .eyebrow{color:var(--marigold);}
+  .why-section h2{color:var(--cream);}
+  .why-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:36px 48px; margin-top:12px;}
+  .why-item{display:flex; gap:16px;}
+  .why-item .mark{width:20px; height:20px; flex-shrink:0; margin-top:3px;}
+  .why-item h4{margin:0 0 6px; font-size:0.98rem; font-weight:700;}
+  .why-item p{margin:0; font-size:0.9rem; color:rgba(251,246,236,0.68);}
+
+  /* ---------- Getting started ---------- */
+  .getting-started{background:#FFFDF8;}
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .test-card{background:var(--cream); border-radius:10px; padding:26px 24px; border-top:3px solid var(--marigold);}
+  .test-card p{font-size:0.98rem; line-height:1.55; margin:0; color:var(--ink);}
+
+  /* ---------- Inquiry ---------- */
+  .inquiry{background:var(--indigo); color:var(--cream);}
+  .inquiry-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .inquiry h2{color:var(--cream);}
+  .inquiry .eyebrow{color:var(--marigold);}
+  .inquiry-side p{color:rgba(251,246,236,0.72); font-size:0.98rem; max-width:38ch;}
+  .contact-row{display:flex; gap:12px; align-items:center; margin-top:22px; font-size:0.95rem;}
+  .contact-row .mark{width:18px; height:18px; flex-shrink:0; color:var(--marigold);}
+
+  form{background:var(--cream); border-radius:12px; padding:32px; color:var(--ink);}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field.full{grid-column:1/-1;}
+  label{font-size:0.8rem; font-weight:700; color:var(--indigo);}
+  input, select, textarea{font-family:var(--sans); font-size:0.95rem; padding:11px 12px; border:1.5px solid var(--line); border-radius:8px; background:var(--cream); color:var(--ink);}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--marigold); outline-offset:1px; border-color:var(--marigold);}
+  textarea{resize:vertical; min-height:80px;}
+  .submit-btn{width:100%; background:var(--marigold); color:var(--indigo-deep); border:none; padding:14px; border-radius:24px; font-weight:700; font-size:0.96rem; cursor:pointer; margin-top:6px;}
+  .submit-btn:hover{background:var(--marigold-deep); color:var(--cream);}
+  .form-note{font-size:0.78rem; color:rgba(35,38,74,0.5); margin-top:12px; text-align:center;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--indigo-deep); color:rgba(251,246,236,0.6); padding:38px 0; font-size:0.85rem;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer a{color:rgba(251,246,236,0.8); text-decoration:none;}
+  .edit-note{background:var(--marigold); color:var(--indigo-deep); font-size:0.78rem; font-weight:700; text-align:center; padding:8px; font-family:var(--sans);}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .subject-grid, .steps, .why-grid, .test-grid{grid-template-columns:1fr;}
+    .step:not(:last-child)::after{display:none;}
+    .step{padding-right:0; margin-bottom:24px;}
+    .about-grid{grid-template-columns:1fr;}
+    .inquiry-grid{grid-template-columns:1fr; gap:32px;}
+    .form-row{grid-template-columns:1fr;}
+    .hero-stats{gap:20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ><div class="edit-note">EDIT ME: replace [City], [Location Name/Area], phone number, and WhatsApp number placeholders below with your real details before publishing.</div> -->
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13" fill="#2A3B7C"/><path d="M9 16l4 4 8-9" stroke="#F0942B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      GK Education Point
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#how">How it works</a>
+      <a href="#inquiry">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#inquiry">Book a free demo</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="accent-bar"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="format-badge">
+        <span>Small group</span><span class="dot">·</span><span>In-person</span><span class="dot">·</span><span>[Location Name/Area]</span>
+      </div>
+      <h1>GK Education Point — 10 years of teaching Math and Science.</h1>
+      <p class="lede">Small-group tuition at [Location Name/Area] in [City], for Classes 6–12, with [Your Qualification] and 10 years of prior teaching experience. Small batches only, so every student still gets real attention. Every other subject is covered too.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#inquiry">Book a free demo class</a>
+        <a class="btn-ghost" href="tel:+91XXXXXXXXXX">Call +91-XXXXX-XXXXX</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>10 yrs</strong><span>Teaching experience</span></div>
+        <div><strong>Small</strong><span>Batch sizes, capped intentionally</span></div>
+        <div><strong>2026</strong><span>Now taking new students in [City]</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>WHAT EACH SESSION INCLUDES</h3>
+      <div class="panel-row"><span>Concept explanation</span><span class="up">✓</span></div>
+      <div class="panel-row"><span>Practice problems</span><span class="up">✓</span></div>
+      <div class="panel-row"><span>Homework review</span><span class="up">✓</span></div>
+      <div class="panel-row"><span>Doubt-clearing anytime on WhatsApp</span><span class="up">✓</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <!-- EDIT ME: replace with a real photo of yourself -->
+      <div class="photo-placeholder">Your photo here</div>
+    </div>
+    <div>
+      <p class="eyebrow">ABOUT YOUR TUTOR</p>
+      <h2>Hi, I'm [Your Name].</h2>
+      <p class="about-text">I taught Math and Science for close to 10 years before stepping away for a while. I'm now starting again as GK Education Point, teaching small groups of students at [Location Name/Area] in [City] — no institute behind it, no other tutors, just me working closely with each batch.</p>
+      <p class="about-text">Because batch sizes are kept small and capped deliberately, every student still gets real attention even in a group setting. You can reach me directly on WhatsApp or by phone with any question, anytime.</p>
+      <div class="about-facts">
+        <div><strong>Qualification</strong><span>[Your degree / qualification]</span></div>
+        <div><strong>Subjects</strong><span>Math & Science (focus), all subjects covered</span></div>
+        <div><strong>Classes</strong><span>Class 6–12</span></div>
+        <div><strong>Location</strong><span>[Location Name/Area], [City]</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subjects" id="subjects">
+  <div class="wrap">
+    <p class="eyebrow">WHAT WE TEACH</p>
+    <h2>Math and Science first — every other subject too.</h2>
+    <p class="section-intro">My core strength is Math and Science, taught with a focus on strong fundamentals. English, Social Studies, and language subjects are covered as well.</p>
+    <div class="subject-grid">
+      <div class="subject-card">
+        <span class="tag">CORE FOCUS</span>
+        <h4>Mathematics</h4>
+        <p>From foundational arithmetic to Class 12 calculus — worked examples, weekly practice, and doubt-clearing every session.</p>
+      </div>
+      <div class="subject-card">
+        <span class="tag">CORE FOCUS</span>
+        <h4>Science</h4>
+        <p>Physics, Chemistry, and Biology taught with everyday examples so concepts actually stick.</p>
+      </div>
+      <div class="subject-card">
+        <span class="tag">CORE FOCUS</span>
+        <h4>Board exam prep</h4>
+        <p>Class 10 and 12 board-focused revision, previous-year papers, and mock tests closer to exam dates.</p>
+      </div>
+      <div class="subject-card">
+        <h4>English</h4>
+        <p>Grammar, comprehension, and writing skills for school exams.</p>
+      </div>
+      <div class="subject-card">
+        <h4>Social Studies</h4>
+        <p>History, Geography, and Civics made easier to remember through timelines and structured notes.</p>
+      </div>
+      <div class="subject-card">
+        <h4>Foundation classes</h4>
+        <p>Early groundwork for Classes 6–8 to build strong habits before board years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="eyebrow">HOW IT WORKS</p>
+    <h2>Four steps from inquiry to your first class.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Share your requirement</h4>
+        <p>Tell me your child's class and subjects through the form or a WhatsApp message.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>A short chat</h4>
+        <p>A quick conversation to understand strengths and gaps before we start.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Free demo class</h4>
+        <p>A no-obligation session at [Location Name/Area] in [City] to see the teaching style firsthand.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Start regular classes</h4>
+        <p>Join a batch and begin — with regular updates on progress along the way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="wrap">
+    <p class="eyebrow">WHY LEARN HERE</p>
+    <h2>What you get with a personal tutor, not an institute.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#F0942B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h4>One tutor, every session</h4><p>It's always me teaching — no rotating staff, no handovers.</p></div>
+      </div>
+      <div class="why-item">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#F0942B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h4>10 years of classroom experience</h4><p>Prior teaching experience across Math and Science, now brought into a small, focused batch setting.</p></div>
+      </div>
+      <div class="why-item">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#F0942B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h4>Regular, honest updates</h4><p>Direct updates on how your child is progressing and where they need more work.</p></div>
+      </div>
+      <div class="why-item">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#F0942B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h4>Small batches, by design</h4><p>Group sizes are kept deliberately small so every student still gets individual attention.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="getting-started">
+  <div class="wrap">
+    <p class="eyebrow">GETTING STARTED</p>
+    <h2>Now taking on the first students in [City].</h2>
+    <p class="section-intro">GK Education Point is just getting started, so the process is simple: a free demo class first, so you and your child can decide if it's a good fit before committing to anything.</p>
+    <div class="test-grid">
+      <div class="test-card">
+        <p>No long-term contract to start. Begin with a free demo class and continue only if it's working for your child.</p>
+      </div>
+      <div class="test-card">
+        <p>Direct WhatsApp access for questions or homework help between sessions, not just during class time.</p>
+      </div>
+      <div class="test-card">
+        <p>As more students join, real parent feedback will be added here. For now, happy to share references on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inquiry" id="inquiry">
+  <div class="wrap inquiry-grid">
+    <div class="inquiry-side">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h2>Book your free demo class today.</h2>
+      <p>Fill in the form and I'll reach out within 24 hours to schedule a free, no-obligation demo class at [Location Name/Area] in [City].</p>
+      <div class="contact-row">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2c1 4 2 6 3 7-1 2-2 3-2 3s2 5 6 6c0 0 1-1 3-2 1 1 3 2 7 3v2c0 1-1 2-2 2C12 24 0 12 0 5" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Call / WhatsApp: <a href="tel:+91XXXXXXXXXX">+91-XXXXX-XXXXX</a></span>
+      </div>
+      <div class="contact-row">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 6l10 7L22 6" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Email: <a href="mailto:hello@gkeducationpoint.in">hello@gkeducationpoint.in</a></span>
+      </div>
+      <div class="contact-row">
+        <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Classes held at: [Location Name/Area], [City]</span>
+      </div>
+    </div>
+
+    <form id="inquiryForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="parentName">Parent's name</label>
+          <input type="text" id="parentName" name="parentName" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="studentClass">Student's class</label>
+          <select id="studentClass" name="studentClass" required>
+            <option value="">Select class</option>
+            <option>Class 6–8</option>
+            <option>Class 9–10</option>
+            <option>Class 11–12</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="subject">Subject(s) needed</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select subject</option>
+            <option>Math only</option>
+            <option>Science only</option>
+            <option>Math + Science</option>
+            <option>All subjects</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <label for="area">Which area of [City] are you in?</label>
+          <input type="text" id="area" name="area" placeholder="e.g. name of your neighbourhood" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <label for="message">Anything else we should know?</label>
+          <textarea id="message" name="message" placeholder="Preferred timing, specific topics, etc."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Send inquiry via WhatsApp</button>
+      <p class="form-note">Submitting opens WhatsApp with your details pre-filled — nothing is sent automatically.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 GK Education Point, [City]. All rights reserved.</span>
+    <span><a href="tel:+91XXXXXXXXXX">+91-XXXXX-XXXXX</a> &nbsp;·&nbsp; <a href="mailto:hello@gkeducationpoint.in">hello@gkeducationpoint.in</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('inquiryForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(this);
+    const text = `New tuition inquiry:%0A` +
+      `Parent: ${data.get('parentName')}%0A` +
+      `Phone: ${data.get('phone')}%0A` +
+      `Class: ${data.get('studentClass')}%0A` +
+      `Subject: ${data.get('subject')}%0A` +
+      `Parent's area: ${data.get('area')}%0A` +
+      `Notes: ${data.get('message') || '-'}`;
+    window.open(`https://wa.me/91XXXXXXXXXX?text=${text}`, '_blank');
+  });
+</script>
+
+</body>
+</html>
